@@ -32,41 +32,47 @@ export const RegisterConfig ={
         name:"FirstName",
         label:"First Name",
         type:'text',
-        placeholder:"Enter First Name"
+        placeholder:"Enter First Name",
+        defaultValue:"",
     },
     LastName:{
         id:"LastName",
         name:"LastName",
         label:"Last Name",
         type:'text',
-        placeholder:"Enter Last Name"
+        placeholder:"Enter Last Name",
+        defaultValue:"",
     },
     Email:{
         id:"Email",
         name:"Email",
         label:"Email",
         type:'email',
-        placeholder:"Enter email"
+        placeholder:"Enter email",
+        defaultValue:"",
     },
     Country:{
         id:"Country",
         name:"Country",
         label:"Country",
         type:'dropdown',
-        placeholder:"Select Country" 
+        placeholder:"Select Country" ,
+        defaultValue:"",
     },
     Password:{
         id:"Password",
         name:"Password",
         label:"Password",
         type:'password',
-        placeholder:"Enter Password"
+        placeholder:"Enter Password",
+        defaultValue:"",
     },
     ConfirmPassword:{
         id:"ConfirmPassword",
         name:"ConfirmPassword",
         label:"Confirm Password",
         type:'password',
-        placeholder:"Confirm Password"
+        placeholder:"Confirm Password",
+        defaultValue:"",
     },
 }

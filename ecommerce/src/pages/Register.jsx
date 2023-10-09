@@ -3,8 +3,17 @@ import { Textbox } from "../components/Textbox"
 
 import { Dropdown } from "../components/Dropdown"
 import { RegisterConfig } from "../utils/config"
+import { useState } from "react"
 
 export const Register = () => {
+    const [register,setRegister] =useState({
+        // FirstName:"",
+        // LastName:"",
+        // Email:"",
+        // Password:"",
+        // ConfirmPassword:"",
+        // Country:""
+    });
     const countryList = [{
         value: "IN",
         text: "India"
@@ -12,17 +21,29 @@ export const Register = () => {
     {
         value: "USA",
         text: "United States of America"
-    }]
+    }];
+    const handleChange =({name,value})=>{
+        const state = register;
+        state[name] = value;//
+        setRegister({...state})
+    }
     return (
         <form className="container mt-4">
-            <Textbox textboxConfig={RegisterConfig.FirstName} />
-            <Textbox textboxConfig={RegisterConfig.LastName} />
+            <Textbox textboxConfig={RegisterConfig.FirstName}
+                      onchange = {handleChange}
+            />
+            <Textbox textboxConfig={RegisterConfig.LastName}
+            onchange = {handleChange} />
+            <Textbox textboxConfig={RegisterConfig.Email}
+            onchange = {handleChange} />
             <Dropdown 
             dropdownConfig={RegisterConfig.Country} 
-            list={countryList} />
-            <Textbox textboxConfig={RegisterConfig.Email} />
-            <Textbox textboxConfig={RegisterConfig.Password} />
-            <Textbox textboxConfig={RegisterConfig.ConfirmPassword} />
+            list={countryList}
+            onchange={handleChange} />
+            <Textbox textboxConfig={RegisterConfig.Password} 
+            onchange={handleChange} />
+            <Textbox textboxConfig={RegisterConfig.ConfirmPassword} 
+            onchange={handleChange} />
 
             <fieldset class="row mb-3">
                 <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
@@ -57,6 +78,7 @@ export const Register = () => {
                     </div>
                 </div>
             </div>
+            {JSON.stringify(register)}
             <button type="submit" class="btn btn-primary">Sign in</button>
         </form>
     )

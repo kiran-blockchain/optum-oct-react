@@ -1,4 +1,7 @@
-export const Dropdown = ({ dropdownConfig, list }) => {
+import { useState } from "react";
+
+export const Dropdown = ({ dropdownConfig, list,onchange }) => {
+    const [data,setData] = useState(dropdownConfig.defaultValue)
     const options = () => {
         if (list && list.length > 0) {
             return list.map((item, index) => {
@@ -17,7 +20,13 @@ export const Dropdown = ({ dropdownConfig, list }) => {
             <div class="col-sm-4">
                 <select id={dropdownConfig.id}
                     className="form-control"
-                    name={dropdownConfig.name}>
+                    name={dropdownConfig.name}
+                    value={data}
+                    onChange={evt=>{
+                        setData(evt.target.value);
+                        onchange(evt.target);
+                    }}
+                    >
                     <option value="">{dropdownConfig.placeholder}</option>
                     {options()}
                 </select>
