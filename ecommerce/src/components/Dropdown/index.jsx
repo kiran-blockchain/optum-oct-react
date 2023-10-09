@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const Dropdown = ({ dropdownConfig, list,onchange }) => {
+export const Dropdown = ({ dropdownConfig, list,handleDdlChange }) => {
     const [data,setData] = useState(dropdownConfig.defaultValue)
     const options = () => {
         if (list && list.length > 0) {
@@ -22,9 +22,9 @@ export const Dropdown = ({ dropdownConfig, list,onchange }) => {
                     className="form-control"
                     name={dropdownConfig.name}
                     value={data}
-                    onChange={evt=>{
+                    onChange={(evt)=>{
                         setData(evt.target.value);
-                        onchange(evt.target);
+                        handleDdlChange(evt.target);
                     }}
                     >
                     <option value="">{dropdownConfig.placeholder}</option>

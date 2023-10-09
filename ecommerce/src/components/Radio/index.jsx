@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const Radio = ({ radioConfig,onchange }) => {
+export const Radio = ({ radioConfig,handleRadioChange }) => {
     const [choice,selectChoice] = useState();
     const buildChoice = () => {
         return radioConfig.options.map((item, index) => {
@@ -13,7 +13,8 @@ export const Radio = ({ radioConfig,onchange }) => {
                     value={item.value}
                     onChange={evt=>{
                         selectChoice(evt.target.value);
-                        onchange(evt.target);
+                        //send the event target to register page
+                        handleRadioChange(evt.target);
                     }}  />
                     <label class="form-check-label" for={item.id}>
                         {item.label}

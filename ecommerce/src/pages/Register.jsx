@@ -8,14 +8,8 @@ import { Radio } from "../components/Radio"
 import { Checkbox } from "../components/Checkbox"
 
 export const Register = () => {
-    const [register, setRegister] = useState({
-        // FirstName:"",
-        // LastName:"",
-        // Email:"",
-        // Password:"",
-        // ConfirmPassword:"",
-        // Country:""
-    });
+    const [register, setRegister] = useState({});
+    const [isButtonEnabled,setEnabled] = useState(false);
     const countryList = [{
         value: "IN",
         text: "India"
@@ -28,35 +22,42 @@ export const Register = () => {
         const state = register;
         if (target.type == 'checkbox') {
             state[target.name]=target.checked;
+            setEnabled(target.checked);
+            
         } else {
             state[target.name] = target.value;//
         }
         setRegister({ ...state })
+       
     }
     return (
         <form className="container mt-4">
             <Textbox textboxConfig={RegisterConfig.FirstName}
-                onchange={handleChange}
+                handleTextboxChange={handleChange}
             />
             <Textbox textboxConfig={RegisterConfig.LastName}
-                onchange={handleChange} />
+                handleTextboxChange={handleChange} />
             <Textbox textboxConfig={RegisterConfig.Email}
-                onchange={handleChange} />
+                handleTextboxChange={handleChange} />
             <Dropdown
                 dropdownConfig={RegisterConfig.Country}
                 list={countryList}
-                onchange={handleChange} />
+                handleDdlChange={handleChange} />
             <Textbox textboxConfig={RegisterConfig.Password}
-                onchange={handleChange} />
+                handleTextboxChange={handleChange} />
             <Textbox textboxConfig={RegisterConfig.ConfirmPassword}
-                onchange={handleChange} />
+                handleTextboxChange={handleChange} />
 
-            <Radio onchange={handleChange}
+            <Radio handleRadioChange={handleChange}
                 radioConfig={RegisterConfig.Gender} />
+
             <Checkbox checkboxConfig={RegisterConfig.AgreeTerms}
-            onchange={handleChange}
+            handleCheckboxChange={handleChange}
             />
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            {isButtonEnabled?<button type="submit" 
+           
+            class="btn btn-primary">Sign in</button>:null}
+            
             <div>
                 {JSON.stringify(register)}
             </div>

@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export const Textbox = ({textboxConfig,onchange}) => {
+export const Textbox = ({textboxConfig,handleTextboxChange}) => {
     //Creating state
     const [data,setData] = useState(textboxConfig.defaultValue);
     return (
@@ -16,7 +16,7 @@ export const Textbox = ({textboxConfig,onchange}) => {
                     value={data}
                     onChange={evt=>{
                         //Send the field name and value to the parent
-                        onchange(evt.target);
+                        handleTextboxChange(evt.target);
 
                         //update the local state
                         setData(evt.target.value);  
