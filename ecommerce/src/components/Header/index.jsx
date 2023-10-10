@@ -1,9 +1,12 @@
 //presentation component
 
+import { useContext } from "react";
 import { NavSection } from "../NavSection";
+import { CartContext } from "../../Providers/cartProvider";
 
 // export const Header = (props) => {
     export const Header = ({headerConfig})=>{
+    const {itemCount,removeItem} = useContext(CartContext)
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
@@ -14,6 +17,12 @@ import { NavSection } from "../NavSection";
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <NavSection navItems={headerConfig.navItems}/>
+                <button className="btn btn-primary">Cart - {itemCount.length}</button>
+                <button className="btn btn-danger"
+                onClick={e=>{
+                        removeItem({id:1});
+                }}
+                >Remove</button>
             </div>
         </nav>
     );
