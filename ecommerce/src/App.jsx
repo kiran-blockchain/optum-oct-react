@@ -1,4 +1,5 @@
 import { Header } from "./components/Header";
+import { MemoDemo } from "./components/MemoDemo";
 
 import { Register } from "./pages/Register";
 import { UserList } from "./pages/UserList";
@@ -8,7 +9,8 @@ const App = () => {
   return (
     <div>
       <Header headerConfig ={HeaderConfig}/>
-      <UserList/>
+      {/* <UserList/> */}
+      <MemoDemo/>
     </div>)
 };
 
