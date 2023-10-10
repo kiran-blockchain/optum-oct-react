@@ -18,11 +18,6 @@ import { CartContext } from "../../Providers/cartProvider";
                 </button>
                 <NavSection navItems={headerConfig.navItems}/>
                 <button className="btn btn-primary">Cart - {itemCount.length}</button>
-                <button className="btn btn-danger"
-                onClick={e=>{
-                        removeItem({id:1});
-                }}
-                >Remove</button>
             </div>
         </nav>
     );

@@ -8,6 +8,7 @@ import { Register } from "./pages/Register";
 import { UserList } from "./pages/UserList";
 import { HeaderConfig } from "./utils/config";
 import { CartContext } from "./Providers/cartProvider";
+import { Products } from "./pages/Products";
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -16,19 +17,14 @@ const App = () => {
     setItems([...items, item])
 
   };
-  const removeFromCart = (item) => {
-    let existing = items;
-    let index = items.findIndex(x => x.id == item.id);
-    existing = existing.slice(index, 1);
-    setItems(existing);
-  }
+ 
   return (
     <CartContext.Provider value={{ itemCount: items, 
     addItem: addToCart,
-    removeItem:removeFromCart }}>
+     }}>
       <div>
         <Header headerConfig={HeaderConfig} />
-        <AddToCart />
+        <Products/>
       </div>
     </CartContext.Provider>)
 };
