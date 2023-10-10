@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect, useId } from 'react';
 function LazyDemo({ userId }) {
-  const [user, setUser] = useState({name:"Kiran",phone:"xxx",website:"xxbb"});
+    //initialize the state.
+  const [user, setUser] = useState(null);
   useEffect(() => {
     // Simulating network delay
     setTimeout(async () => {
@@ -9,7 +10,7 @@ function LazyDemo({ userId }) {
        fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
       const data = await response.json();
       setUser(data);
-    },[]);
+    },5000);
   }, [userId]);
   if (!user) {
     return <div>Loading user...</div>;
