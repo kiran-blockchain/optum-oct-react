@@ -23,12 +23,12 @@ const ItemList = () => {
 
     const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
 
-    //   const toggleActive = useCallback((item) => {
-    //     setActiveItem(prevItem => (prevItem === item ? null : item));
-    //   }, []);
-    const toggleActive = (item) => {
+      const toggleActive = useCallback((item) => {
         setActiveItem(prevItem => (prevItem === item ? null : item));
-    };
+      }, []);
+    // const toggleActive = (item) => {
+    //     setActiveItem(prevItem => (prevItem === item ? null : item));
+    // };
 
     return (
         <div>
