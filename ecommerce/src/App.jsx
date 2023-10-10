@@ -1,3 +1,4 @@
+import ItemList from "./components/CallBackDemo";
 import { Header } from "./components/Header";
 import { MemoDemo } from "./components/MemoDemo";
 
@@ -10,7 +11,8 @@ const App = () => {
     <div>
       <Header headerConfig ={HeaderConfig}/>
       {/* <UserList/> */}
-      <MemoDemo/>
+      {/* <MemoDemo/> */}
+      <ItemList/>
     </div>)
 };
 

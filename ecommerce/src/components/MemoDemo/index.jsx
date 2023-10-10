@@ -2,7 +2,12 @@ import React, { useMemo, useState } from "react"
 
  const ComponentOne =React.memo((props)=>{
     return(
+        <div>
         <h1>I am C1 {props.value1}</h1>
+        <button onClick={e=>{
+
+        }}>I am in C1</button>
+        </div>
     )
  });
  const ComponentTwo =(props)=>{
