@@ -19,13 +19,30 @@ const ProductSlice = createSlice({
         "total": 0,
         "skip": 0,
         "limit": 0,
-        cartItems: []
+        cartItems: [],
+        total: 0
     },
     reducers: {
         addToCart: (state, action) => {
             let cartItems = [...state.cartItems];
             cartItems.push(action.payload);
-            return { ...state, cartItems }
+            let total = cartItems.reduce((x, y) => {
+                return x.price + y.price
+            });
+            return { ...state, cartItems, total: total }
+        },
+        resetCart: (state, action) => {
+            return {
+                ...state,
+                isLoading: false,
+                hasError: false,
+                products: [],
+                "total": 0,
+                "skip": 0,
+                "limit": 0,
+                cartItems: [],
+                total: 0
+            }
         }
     },
     extraReducers: (builder) => {
@@ -51,6 +68,6 @@ const ProductSlice = createSlice({
     }
 });
 
-export const {addToCart } = ProductSlice.actions;
+export const { addToCart,resetCart } = ProductSlice.actions;
 
 export default ProductSlice.reducer;

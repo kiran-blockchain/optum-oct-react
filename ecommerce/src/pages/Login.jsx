@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../store/AuthReducer";
 import { Textbox } from "../components/Textbox";
 import { ProgressIndicator } from "../components/Progress";
+import { useNavigate } from "react-router";
 
 export const Login = () => {
+    const navigate = useNavigate();
     const auth = useSelector(x => x.auth);
     const [signin, setSignin] = useState({
         username: "kminchelle",
@@ -20,6 +22,9 @@ export const Login = () => {
     };
     const showSuccess = () => {
         if (auth.loginStatus) {
+           setTimeout(()=>{
+            navigate("/products")
+           },5000)
             return (<div class="alert alert-success" role="alert">
                 User Logged In Successfully.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

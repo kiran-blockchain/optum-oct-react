@@ -1,3 +1,8 @@
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { logout } from "../../store/AuthReducer";
+import { resetCart } from "../../store/productReducer";
+
 export const NavSection = ({ navItems }) => {
     // const navItems = [{
     //     index: 0,
@@ -24,12 +29,30 @@ export const NavSection = ({ navItems }) => {
     //     name: "Logout",
     //     url: "/logout"
     // },];
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const auth = useSelector(x=>x.auth);
+
     const buildNavLinks = () => {
         if (navItems && navItems.length > 0) {
+            if(auth.loginStatus){
+                navItems = navItems.filter(x=>x.index>=2)
+            }else{
+                navItems = navItems.filter(x=>x.index<2)
+            }
             return navItems.map((item, index) => {
                 return (
                     <li className="nav-item" key={item.name + item.index}>
-                        <a className="nav-link" href={item.url}>{item.name}</a>
+                        <a className="nav-link" onClick={e=>{
+                            if(item.url=='/logout'){
+                                dispatch(resetCart())
+                                dispatch(logout());
+                                navigate("/");
+                            }else{
+                                navigate(`${item.url}`)
+                            }
+
+                        }}>{item.name}</a>
                     </li>
                 );
             })
