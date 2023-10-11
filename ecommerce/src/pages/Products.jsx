@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProducts } from "../store/productReducer";
 import { ProductList } from "../components/ProductList";
-
-export const Products = () => {
+import { authentication } from "../components/Authroized";
+ const Products = () => {
     const productInfo = useSelector(x => x.products);
     console.log(productInfo);
     const dispatch = useDispatch();
@@ -15,5 +15,5 @@ export const Products = () => {
            <ProductList list={productInfo.products}/>
         </div>
     )
-
 }
+export default authentication(Products)

@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
+import { authentication } from "../components/Authroized";
 
-export const Cart = ()=>{
+const Cart = ()=>{
     const cart = useSelector(x=>x.products); 
     const buildCart =()=>{
         return(cart.cartItems.map((item,index)=>{
@@ -35,3 +36,5 @@ export const Cart = ()=>{
         </table>
     )
 }
+
+export default authentication(Cart)

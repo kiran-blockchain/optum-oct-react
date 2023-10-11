@@ -8,7 +8,7 @@ import { Register } from "./pages/Register";
 import { UserList } from "./pages/UserList";
 import { HeaderConfig } from "./utils/config";
 import { CartContext } from "./Providers/cartProvider";
-import { Products } from "./pages/Products";
+
 import { Login } from "./pages/Login";
 import { AppRoutes } from "./AppRouters";
 import { useNetworkState } from "./hooks/useNetwork";
