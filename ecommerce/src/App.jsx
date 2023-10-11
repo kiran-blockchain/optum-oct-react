@@ -10,6 +10,7 @@ import { HeaderConfig } from "./utils/config";
 import { CartContext } from "./Providers/cartProvider";
 import { Products } from "./pages/Products";
 import { Login } from "./pages/Login";
+import { AppRoutes } from "./AppRouters";
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -25,8 +26,7 @@ const App = () => {
      }}>
       <div>
         <Header headerConfig={HeaderConfig} />
-        {/* <Products/> */}
-        <Login/>
+        <AppRoutes/>
       </div>
     </CartContext.Provider>)
 };
