@@ -22,10 +22,11 @@ const ItemList = () => {
     const [activeItem, setActiveItem] = useState(null);
 
     const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
-
-      const toggleActive = useCallback((item) => {
+    const callbackFn = (item) => {
         setActiveItem(prevItem => (prevItem === item ? null : item));
-      }, []);
+    };
+
+    const toggleActive = useCallback(callbackFn, []);
     // const toggleActive = (item) => {
     //     setActiveItem(prevItem => (prevItem === item ? null : item));
     // };

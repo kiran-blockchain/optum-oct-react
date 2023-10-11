@@ -9,6 +9,7 @@ import { UserList } from "./pages/UserList";
 import { HeaderConfig } from "./utils/config";
 import { CartContext } from "./Providers/cartProvider";
 import { Products } from "./pages/Products";
+import { Login } from "./pages/Login";
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -24,7 +25,8 @@ const App = () => {
      }}>
       <div>
         <Header headerConfig={HeaderConfig} />
-        <Products/>
+        {/* <Products/> */}
+        <Login/>
       </div>
     </CartContext.Provider>)
 };

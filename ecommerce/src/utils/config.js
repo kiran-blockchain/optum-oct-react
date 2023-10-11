@@ -51,6 +51,14 @@ export const RegisterConfig = {
         placeholder: "Enter email",
         defaultValue: "",
     },
+    Username: {
+        id: "username",
+        name: "username",
+        label: "User Name",
+        type: 'text',
+        placeholder: "Enter Username",
+        defaultValue: "",
+    },
     Country: {
         id: "Country",
         name: "Country",
@@ -61,8 +69,8 @@ export const RegisterConfig = {
     },
     Password: {
         id: "Password",
-        name: "Password",
-        label: "Password",
+        name: "password",
+        label: "password",
         type: 'password',
         placeholder: "Enter Password",
         defaultValue: "",
