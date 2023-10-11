@@ -1,35 +1,39 @@
 
 
- import { Textbox } from "../components/Textbox"
+import { Textbox } from "../components/Textbox"
 import { Dropdown } from "../components/Dropdown"
 import { RegisterConfig } from "../utils/config"
 import { useState } from "react"
 import { Radio } from "../components/Radio"
 import { Checkbox } from "../components/Checkbox"
+import { useApi } from "../hooks/useApi"
 
 export const Register = () => {
     const [register, setRegister] = useState({});
-    const [isButtonEnabled,setEnabled] = useState(false);
-    const countryList = [{
-        value: "IN",
-        text: "India"
-    },
-    {
-        value: "USA",
-        text: "United States of America"
-    }];
+    const [isButtonEnabled, setEnabled] = useState(false);
+    const [countryList, setCountryList] = useState([])
+
+    const apiResult = useApi("https://restcountries.com/v2/all", "get");
+    console.log(apiResult);
     const handleChange = (target) => {
         const state = register;
         if (target.type == 'checkbox') {
-            state[target.name]=target.checked;
+            state[target.name] = target.checked;
             setEnabled(target.checked);
-            
+
         } else {
             state[target.name] = target.value;//
         }
         setRegister({ ...state })
-       
+
     }
+    // if (apiResult && apiResult.status == "success" && apiResult.data.length > 0) {
+    //     let mapped = apiResult.data.map(x => {
+    //         return { text: x.name, value: x.alpha2Code }
+    //     });
+    //     setCountryList(mapped);
+    // }
+    console.log("I am loading!!!!");
     return (
         <form className="container mt-4">
             <Textbox textboxConfig={RegisterConfig.FirstName}
@@ -52,12 +56,12 @@ export const Register = () => {
                 radioConfig={RegisterConfig.Gender} />
 
             <Checkbox checkboxConfig={RegisterConfig.AgreeTerms}
-            handleCheckboxChange={handleChange}
+                handleCheckboxChange={handleChange}
             />
-            {isButtonEnabled?<button type="submit" 
-           
-            class="btn btn-primary">Sign in</button>:null}
-            
+            {isButtonEnabled ? <button type="submit"
+
+                class="btn btn-primary">Sign in</button> : null}
+
             <div>
                 {JSON.stringify(register)}
             </div>

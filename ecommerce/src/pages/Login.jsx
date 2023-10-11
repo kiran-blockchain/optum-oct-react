@@ -5,9 +5,13 @@ import { login } from "../store/AuthReducer";
 import { Textbox } from "../components/Textbox";
 import { ProgressIndicator } from "../components/Progress";
 import { useNavigate } from "react-router";
+import { useNetworkState } from "../hooks/useNetwork";
 
 export const Login = () => {
     const navigate = useNavigate();
+    //import custom hook
+    const networkStatus = useNetworkState();
+    
     const auth = useSelector(x => x.auth);
     const [signin, setSignin] = useState({
         username: "kminchelle",
@@ -22,27 +26,31 @@ export const Login = () => {
     };
     const showSuccess = () => {
         if (auth.loginStatus) {
-           setTimeout(()=>{
-            navigate("/products")
-           },5000)
+            setTimeout(() => {
+                navigate("/products")
+            }, 5000)
             return (<div class="alert alert-success" role="alert">
                 User Logged In Successfully.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>)
-        } else if(auth.hasError){
+        } else if (auth.hasError) {
             return (<div class="alert alert-danger" role="alert">
                 Invalid Credentials.
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>) 
+            </div>)
         }
     };
-    const showProgress =()=>{
-        return( auth.isLoading?<ProgressIndicator/>:null);
+    const showProgress = () => {
+        return (auth.isLoading ? <ProgressIndicator /> : null);
     }
     return (
         <form className="container mt-4">
             {showSuccess()}
             {showProgress()}
+            <div>
+                <label>{networkStatus ? "Online" : "offline"}</label>
+            </div>
+
             <Textbox textboxConfig={RegisterConfig.Username}
                 handleTextboxChange={handleChange}
             />

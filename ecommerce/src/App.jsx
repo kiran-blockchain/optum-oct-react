@@ -11,22 +11,27 @@ import { CartContext } from "./Providers/cartProvider";
 import { Products } from "./pages/Products";
 import { Login } from "./pages/Login";
 import { AppRoutes } from "./AppRouters";
+import { useNetworkState } from "./hooks/useNetwork";
 
 const App = () => {
   const [items, setItems] = useState([]);
+  
   const addToCart = (item) => {
 
     setItems([...items, item])
 
   };
- 
+
+
   return (
-    <CartContext.Provider value={{ itemCount: items, 
-    addItem: addToCart,
-     }}>
+    <CartContext.Provider value={{
+      itemCount: items,
+      addItem: addToCart,
+    }}>
       <div>
         <Header headerConfig={HeaderConfig} />
-        <AppRoutes/>
+       
+        <AppRoutes />
       </div>
     </CartContext.Provider>)
 };
